@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Navbar from "./Components/NavBar/NavBar"
+import MiComponente from "./Components/MiComponente";
+import Usuarios from "./Components/Usuarios";
+//import ItemListContainer from "./Containers/ItemListContainer/ItemListContainer";
+//import './App.css';
 
-function App() {
+
+const App = () => {
+
+
+
+  const mensaje = "Hola, bienvenidos!";
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Navbar mensaje={mensaje} />
+      {/* <MiComponente/>
+      <Usuarios/> */}
+    </>
+  )
 }
 
-export default App;
+export default App
