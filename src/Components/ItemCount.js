@@ -16,7 +16,7 @@ const [contador,setContador]=useState(1);
     }
 
     const restar =() => {
-        (contador) > 0 ? setContador(contador - 1) : Swal.fire(`Al menos debe haber un ítem para agregar!`);
+        (contador) > 1 ? setContador(contador - 1) : Swal.fire(`Al menos debe haber un ítem para agregar!`);
     }
     const agregar =() => {
         onAdd(contador);
