@@ -1,18 +1,21 @@
-import React,{useState} from 'react'
+import React from 'react'
 import Button from '@mui/material/Button';
-import Swal from 'sweetalert2'
+
+
 
 
 const Item = ({product})=>{
     return(
         <>
-        <div style={ styles.card}> 
+        <div style={styles.card}> 
             <h2 style={styles.title}>{product?.name}</h2>
-            <img width='200' height='200' src={product?.img} alt="" />
+            <img style={styles.img} src={product?.img} alt="" />
             <div  style={styles.itemCard}>
                 <h3 style={styles.cardText}>Precio: $ {product?.price}</h3>
                 <p style={styles.cardText}>Stock: {product?.stock} unidades.</p>
+                <Button variant="contained" color="success">Ver Detalle</Button>
             </div>
+                        
         </div>
         </>
     )
@@ -20,44 +23,43 @@ const Item = ({product})=>{
 const styles ={
     title:{
         color: '#3d9915',
-        textAlign: 'center'
+        textAlign: 'center',
+        fontFamily: 'Ubuntu-Regular'
     },
     card:{
-        display: 'block',
-        alignItems:'center',
-        justifyContent: 'space-between',
-        margin:'2%',
-        fontSize: '150%',
-        width: '300px',
+        display: 'inline-block',
+        // alignItems:'center',
+        // justifyContent: 'space-around',
+        margin:'10px',
+        width: '250px',
         border: '2px solid #dbfbde',
-        borderRadius:10
+        borderRadius:10,
+        marginBottom: 25
     },
     
     img:{
-        display: 'block',
+        display: 'flex',
         alignItems:'center',
         justifyContent: 'center',
-        textAlign: 'center'
+        width: '250px'
     },
     cardText:{
-        display: 'block',
-        alignItems:'center',
+        display: 'flex',
+        //alignItems:'center',
         justifyContent: 'center',
         textAlign: 'center',
         margin:'1%',
         padding: '2%',
+        fontFamily: 'Ubuntu-Regular'
 
     },
     itemCard:{
+        display: 'block',
         background: '#dbfbde',
         padding: 10,
-        alignText:'center',
+        textAlign:'center',
         borderRadius:10
-    },
-    Symbol: {
-        padding: '6%',
-    },
-    
+    }
 }
 
 

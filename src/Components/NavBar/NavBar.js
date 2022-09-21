@@ -17,7 +17,7 @@ const Navbar = ({mensaje}) => {
     return (
         <header style={styles.container}>
             <img style={styles.imagen} src={logo} alt="logo" />
-            <h2>{mensaje}</h2>
+            <h3>{mensaje}</h3>
             <Nav categorias={categorias}/>
             <CartWidget />
         </header>
