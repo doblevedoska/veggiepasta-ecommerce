@@ -1,19 +1,24 @@
 // import React from 'react'
+import Button from '@mui/material/Button';
 
 
 const ItemDetail = ({producto})=>{
     
     return(
         <>
-        <div style={styles.card}> 
-            <h2 style={styles.title}>{producto.title}</h2>
-            <img style={styles.img} src={producto.image} alt="" />
-            <div  style={styles.itemCard}>
-                <h3 style={styles.cardText}>Precio: $ {producto.price}</h3>
-                <p style={styles.cardText}>Descripción: {producto.description} unidades.</p>
-            </div>
-                        
+        <div style={styles.card}>
+        <div style={styles.cardLeft}> 
+            <img style={styles.img} src={producto.image} alt="" />                   
         </div>
+        <div  style={styles.cardRight}>
+            <h2 style={styles.title}>{producto.title}</h2>
+            <p style={styles.cardDesc}>Descripción: {producto.description}.</p>
+            <h3 style={styles.cardPrice}>Precio: $ {producto.price}</h3>
+            <Button variant="outlined" color="success">Agregar al carrito</Button>
+        </div>
+
+        </div>
+
         </>
         
     )
@@ -22,41 +27,57 @@ const ItemDetail = ({producto})=>{
 const styles ={
     title:{
         color: '#3d9915',
-        textAlign: 'center',
+        padding: '2%',
         fontFamily: 'Ubuntu-Regular'
     },
-    card:{
+    cardLeft:{
         display: 'inline-block',
         // alignItems:'center',
         // justifyContent: 'space-around',
         margin:'10px',
-        width: '250px',
+        width: '450px',
+        marginBottom: 25
+    },
+    card:{
+        display: 'flex',
+        // alignItems:'center',
+        // justifyContent: 'center',
+        margin: '0 auto',
+        width: '90%',
         border: '2px solid #dbfbde',
         borderRadius:10,
         marginBottom: 25
     },
     
     img:{
-        display: 'flex',
+        display: 'block',
+        // alignItems:'center',
+        // justifyContent: 'center',
+        marginLeft: 'auto',
+        marginRight: 'auto',
         alignItems:'center',
         justifyContent: 'center',
         width: '250px'
     },
-    cardText:{
-        display: 'flex',
-        //alignItems:'center',
+    cardDesc:{
         justifyContent: 'center',
-        textAlign: 'center',
         margin:'1%',
         padding: '2%',
         fontFamily: 'Ubuntu-Regular'
 
     },
-    itemCard:{
-        display: 'block',
+    cardPrice:{
+        justifyContent: 'center',
+        margin:'1%',
+        padding: '2%',
+        fontFamily: 'Ubuntu-Regular'
+    },
+    cardRight:{
+        display: 'inline-block',
         background: '#dbfbde',
         padding: 10,
-        textAlign:'center',
+        textAlign:'left',
+        fontSize: '120%',
         borderRadius:10
     }
 }

@@ -28,7 +28,7 @@ const styles ={
     },
     card:{
         display: 'inline-block',
-        // alignItems:'center',
+        //alignItems:'center',
         // justifyContent: 'space-around',
         margin:'10px',
         width: '250px',
@@ -38,10 +38,12 @@ const styles ={
     },
     
     img:{
-        display: 'flex',
-        alignItems:'center',
-        justifyContent: 'center',
-        width: '250px'
+        display: 'block',
+        // alignItems:'center',
+        // justifyContent: 'center',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        height: '200px'
     },
     cardText:{
         display: 'flex',

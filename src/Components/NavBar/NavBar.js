@@ -8,10 +8,10 @@ import { Nav } from './Nav/Nav';
 const Navbar = ({mensaje}) => {
 
     const categorias = [
-        { id: 0, nombre: 'Historia' },
-        { id: 1, nombre: 'Productos' },
-        { id: 2, nombre: 'Recetas' },
-        { id: 3, nombre: 'Contacto' },
+        { id: 0, nombre: 'Productos VeggiePasta®' },
+        { id: 1, nombre: 'Otras Pastas' },
+        { id: 2, nombre: 'Pastas con glúten' },
+        { id: 3, nombre: 'Acompañamientos' },
     ]
 
     return (
@@ -32,7 +32,7 @@ const styles = {
         background: '#dbfbde',
         padding: '1%',
         margin:'1%',
-        fontSize: '130%',
+        fontSize: '100%',
         border: '1px solid #3d9915',
         borderRadius: 10,
         alignItems: 'center',

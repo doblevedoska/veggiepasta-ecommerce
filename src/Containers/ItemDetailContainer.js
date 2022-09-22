@@ -11,7 +11,7 @@ const ItemDetailContainer = ({greeting}) =>{
     useEffect(()=>{
         const getItem = async () => {
             try{
-                const respuesta = await fetch ('https://fakestoreapi.com/products/1');
+                const respuesta = await fetch ('https://fakestoreapi.com/products/10');
                 const data = await respuesta.json();
                 setProducto(data);
             }
@@ -28,7 +28,7 @@ const ItemDetailContainer = ({greeting}) =>{
 
 return(
     <>
-    <h1>{greeting}</h1>
+    <h2 style={styles.detalleText}>{greeting}</h2>
     {loading ?
     <LinearProgress color="inherit"/>
     :
@@ -37,6 +37,15 @@ return(
     </> 
 )
 }
+
+const styles ={
+    detalleText:{
+        textAlign: 'left',
+        fontFamily: 'Ubuntu-Regular'
+    }
+}
+
+
 
 
 export default ItemDetailContainer
