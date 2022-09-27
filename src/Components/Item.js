@@ -1,10 +1,11 @@
 import React from 'react'
 import Button from '@mui/material/Button';
-
+import {Link} from "react-router-dom";
 
 
 
 const Item = ({product})=>{
+    console.log(product.id);
     return(
         <>
         <div style={styles.card}> 
@@ -13,8 +14,12 @@ const Item = ({product})=>{
             <div  style={styles.itemCard}>
                 <h3 style={styles.cardText}>Precio: $ {product?.price}</h3>
                 <p style={styles.cardText}>Stock: {product?.stock} unidades.</p>
-                <Button variant="contained" color="success">Ver Detalle</Button>
-            </div>
+                <Link to={`/detalleproducto/${product.id}`}>
+                    <Button variant="contained" color="success">Ver Detalle</Button>
+                </Link>
+
+                
+        </div>
                         
         </div>
         </>

@@ -8,10 +8,10 @@ const ItemDetail = ({producto})=>{
         <>
         <div style={styles.card}>
         <div style={styles.cardLeft}> 
-            <img style={styles.img} src={producto.image} alt="" />                   
+            <img style={styles.img} src={producto.img} alt="" />                   
         </div>
         <div  style={styles.cardRight}>
-            <h2 style={styles.title}>{producto.title}</h2>
+            <h2 style={styles.title}>{producto.name}</h2>
             <p style={styles.cardDesc}>Descripción: {producto.description}.</p>
             <h3 style={styles.cardPrice}>Precio: $ {producto.price}</h3>
             <Button variant="outlined" color="success">Agregar al carrito</Button>
@@ -35,7 +35,7 @@ const styles ={
         // alignItems:'center',
         // justifyContent: 'space-around',
         margin:'10px',
-        width: '450px',
+        width: '250px',
         marginBottom: 25
     },
     card:{
@@ -43,7 +43,7 @@ const styles ={
         // alignItems:'center',
         // justifyContent: 'center',
         margin: '0 auto',
-        width: '90%',
+        width: '800px',
         border: '2px solid #dbfbde',
         borderRadius:10,
         marginBottom: 25
@@ -78,6 +78,7 @@ const styles ={
         padding: 10,
         textAlign:'left',
         fontSize: '120%',
+        width: '550px',
         borderRadius:10
     }
 }

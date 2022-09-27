@@ -3,26 +3,34 @@ import React from 'react'
 import logo from '../../Assets/Images/logo.png'
 import CartWidget from '../CartWidget/CartWidget';
 import { Nav } from './Nav/Nav';
+import {Link} from "react-router-dom";
 
 
 const Navbar = ({mensaje}) => {
 
     const categorias = [
-        { id: 0, nombre: 'Productos VeggiePasta®' },
-        { id: 1, nombre: 'Otras Pastas' },
-        { id: 2, nombre: 'Pastas con glúten' },
-        { id: 3, nombre: 'Acompañamientos' },
+        { id: 0, nombre: 'Productos VeggiePasta®', ruta: '/categoria/veggiepasta'},
+        { id: 1, nombre: 'Otras Pastas', ruta: '/categoria/otraspastas' },
+        { id: 2, nombre: 'Pastas con glúten', ruta: '/categoria/pastasgluten' },
+        { id: 3, nombre: 'Acompañamientos', ruta: '/categoria/acompanamientos' },
     ]
 
     return (
         <header style={styles.container}>
-            <img style={styles.imagen} src={logo} alt="logo" />
+            <Link to="/">
+                <img width="250" src={logo} alt="logo" />
+            </Link>
             <h3>{mensaje}</h3>
             <Nav categorias={categorias}/>
-            <CartWidget />
+            <Link to="/cart">
+                <CartWidget />
+            </Link>
+            
         </header>
     )
 }
+
+
 
 
 const styles = {
@@ -38,9 +46,9 @@ const styles = {
         alignItems: 'center',
         fontFamily: 'Ubuntu-Regular'
     },
-    imagen: {
-        width: '20%',
-    },
+    // imagen: {
+    //     width: '20%',
+    // },
 }
 
 export default Navbar

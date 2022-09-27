@@ -5,8 +5,11 @@ import Navbar from "./Components/NavBar/NavBar"
 // import Usuarios from "./Components/Usuarios";
 import ItemListContainer from "./Containers/ItemListContainer";
 import ItemDetailContainer from "./Containers/ItemDetailContainer";
+import {Cart} from "./Containers/CartView/Cart";
 // import Swal from 'sweetalert2'
 //import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 
 
 const App = () => {
@@ -20,15 +23,21 @@ const App = () => {
   //   //console.log(`Se agregaron ${contador} ítems al carrito`);
   //   Swal.fire(`Se agregaron ${contador} ítems al carrito`);
   // }
- 
+
+
 
   return (
     <>
-      <Navbar mensaje={mensaje} />
-      <ItemListContainer greeting={landing}/>
-      <ItemDetailContainer greeting={detalle}/>
-    
-    
+      <BrowserRouter>
+        <Navbar mensaje={mensaje} />
+        <Routes>
+          <Route path='/' element={<ItemListContainer greeting={landing}/>}/>
+          <Route path='/categoria/:IdCat' element={<ItemListContainer greeting={landing}/>}/>
+          <Route path='/detalleproducto/:IdProd' element={<ItemDetailContainer greeting={detalle}/>}/>
+          <Route path='/cart' element={<Cart/>}/>
+        </Routes>
+
+      </BrowserRouter>
     </>
   )
 }

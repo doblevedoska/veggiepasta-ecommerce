@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { products } from "../Components/Products";
 import { ItemList } from "../Components/ItemList";
 import LinearProgress from '@mui/material/LinearProgress';
+import { useParams } from "react-router-dom";
+//import { responsiveFontSizes } from "@material-ui/core";
 
 
 export const customFetch =(products)=>{
@@ -15,6 +17,8 @@ return new Promise((resolve, reject) => {
 }
 
 const ItemListContainer = ({greeting}) =>{
+
+    let {IdCat} = useParams();
     const [listProducts, setListproducts] = useState([])
     const [loading, setLoading] = useState(true)
 
@@ -22,10 +26,18 @@ const ItemListContainer = ({greeting}) =>{
     customFetch(products)
         .then(res=> 
         {
-            setLoading (false)
-            setListproducts(res)
+            if(IdCat){
+                setLoading (false)
+                setListproducts(res.filter(productos => productos.categoria === IdCat))
+
+            }
+            else{
+                setLoading (false)
+                setListproducts(res)
+            }
+
         })
-},[])
+},[IdCat])
 
 return(
     <>
