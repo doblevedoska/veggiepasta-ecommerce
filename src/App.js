@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./Components/NavBar/NavBar"
 // import MiComponente from "./Components/MiComponente";
-// import ItemCount from "./Components/ItemCount";
+
 // import Usuarios from "./Components/Usuarios";
 import ItemListContainer from "./Containers/ItemListContainer";
 import ItemDetailContainer from "./Containers/ItemDetailContainer";
@@ -38,6 +38,7 @@ const App = () => {
         </Routes>
 
       </BrowserRouter>
+      
     </>
   )
 }

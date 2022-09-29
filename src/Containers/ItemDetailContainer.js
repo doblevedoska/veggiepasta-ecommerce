@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { products } from "../Components/Products";
 import { ItemDetail } from "../Components/ItemDetail";
+
 import LinearProgress from '@mui/material/LinearProgress';
 import { useParams } from "react-router-dom";
 
@@ -48,14 +49,16 @@ return(
     <LinearProgress color="inherit"/>
     :
     <ItemDetail producto={producto}/>
+    
     }
+    
     </> 
 )
 }
 
 const styles ={
     detalleText:{
-        textAlign: 'left',
+        textAlign: 'center',
         fontFamily: 'Ubuntu-Regular'
     }
 }

@@ -14,17 +14,16 @@ const Item = ({product})=>{
             <div  style={styles.itemCard}>
                 <h3 style={styles.cardText}>Precio: $ {product?.price}</h3>
                 <p style={styles.cardText}>Stock: {product?.stock} unidades.</p>
-                <Link to={`/detalleproducto/${product.id}`}>
+                <Link style={styles.link} to={`/detalleproducto/${product.id}`}>
                     <Button variant="contained" color="success">Ver Detalle</Button>
-                </Link>
-
-                
-        </div>
-                        
+                </Link>               
+            </div>                      
         </div>
         </>
     )
 }
+
+
 const styles ={
     title:{
         color: '#3d9915',
@@ -49,6 +48,9 @@ const styles ={
         marginLeft: 'auto',
         marginRight: 'auto',
         height: '200px'
+    },
+    link:{
+        textDecoration: 'none'
     },
     cardText:{
         display: 'flex',
