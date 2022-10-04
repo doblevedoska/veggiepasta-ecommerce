@@ -2,14 +2,26 @@
 import Button from '@mui/material/Button';
 import { useState } from "react";
 import  ItemCount  from "../Components/ItemCount/ItemCount";
-import  { Link } from 'react-router-dom'
+import  { Link } from 'react-router-dom';
+import { useCartContext } from '../Context/CartContext';
+import Toastify from "toastify-js";
+import "toastify-js/src/toastify.css";
 
 
-const ItemDetail = ({producto})=>{
+export const ItemDetail = ({producto})=>{
 
     const [irAlCarrito, setIrAlCarrito] = useState (false); 
 
-    const onAdd = () => {setIrAlCarrito(true)};
+    // const onAdd = () => {setIrAlCarrito(true)};
+    const { addItem } = useCartContext();
+    const onAdd = (cantidad) => {
+        setIrAlCarrito(true);
+        addItem(producto, cantidad);
+        Toastify({
+          text: `Usted a agregado ${cantidad} unidades de ${producto.name}.`,
+          duration: 3500,
+        }).showToast();
+      };
     
     return(
         <>
@@ -100,4 +112,4 @@ const styles ={
 }
 
 
-export  {ItemDetail}  
+// export  {ItemDetail}  

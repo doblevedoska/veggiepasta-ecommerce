@@ -1,14 +1,10 @@
 import React from "react";
 import Navbar from "./Components/NavBar/NavBar"
-// import MiComponente from "./Components/MiComponente";
-
-// import Usuarios from "./Components/Usuarios";
 import ItemListContainer from "./Containers/ItemListContainer";
 import ItemDetailContainer from "./Containers/ItemDetailContainer";
 import {Cart} from "./Containers/CartView/Cart";
-// import Swal from 'sweetalert2'
-//import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CustomProvider } from "./Context/CartContext";
 
 
 
@@ -29,14 +25,15 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
-        <Navbar mensaje={mensaje} />
-        <Routes>
-          <Route path='/' element={<ItemListContainer greeting={landing}/>}/>
-          <Route path='/categoria/:IdCat' element={<ItemListContainer greeting={landing}/>}/>
-          <Route path='/detalleproducto/:IdProd' element={<ItemDetailContainer greeting={detalle}/>}/>
-          <Route path='/cart' element={<Cart/>}/>
-        </Routes>
-
+        <CustomProvider>
+          <Navbar mensaje={mensaje} />
+          <Routes>
+            <Route path='/' element={<ItemListContainer greeting={landing}/>}/>
+            <Route path='/categoria/:IdCat' element={<ItemListContainer greeting={landing}/>}/>
+            <Route path='/detalleproducto/:IdProd' element={<ItemDetailContainer greeting={detalle}/>}/>
+            <Route path='/cart' element={<Cart/>}/>
+          </Routes>
+        </CustomProvider>
       </BrowserRouter>
       
     </>

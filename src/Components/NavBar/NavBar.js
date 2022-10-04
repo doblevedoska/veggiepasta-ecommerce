@@ -1,7 +1,7 @@
 
 import React from 'react'
 import logo from '../../Assets/Images/logo.png'
-import CartWidget from '../CartWidget/CartWidget';
+import { CartWidget } from '../CartWidget/CartWidget';
 import { Nav } from './Nav/Nav';
 import {Link} from "react-router-dom";
 
@@ -15,6 +15,7 @@ const Navbar = ({mensaje}) => {
         { id: 3, nombre: 'Acompañamientos', ruta: '/categoria/acompanamientos' },
     ]
 
+
     return (
         <header style={styles.container}>
             <Link to="/">
@@ -23,7 +24,7 @@ const Navbar = ({mensaje}) => {
             <h3>{mensaje}</h3>
             <Nav categorias={categorias}/>
             <Link to="/cart">
-                <CartWidget />
+                <CartWidget/>
             </Link>
             
         </header>
