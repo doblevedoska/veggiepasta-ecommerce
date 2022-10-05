@@ -1,43 +1,42 @@
 import React from "react";
-import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone';
 import { useCartContext } from "../../Context/CartContext";
-import styled from "styled-components";
 
 export const CartWidget = () => {
-  const { totalProd } = useCartContext("");
+  const { ProdTotal } = useCartContext("");
 
   return (
     <>
-      <CartWCon>
-        <CartProducts>{totalProd() || ""}</CartProducts>
-        <ShoppingBasketIcon fontSize="large" sx={{ color: "#ffffff" }} />
-      </CartWCon>
+      <div style={styles.container}>
+        <div style={styles.prod}>{ProdTotal() || ""}</div>
+        <ShoppingCartTwoToneIcon fontSize="large" sx={{ color: "#6c757d" }} />
+      </div>
     </>
   );
 };
 
-const CartWCon = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-content: center;
-  margin: 10px;
-  position: static;
-  &:hover {
-    transform: scale(1.1, 1.1);
-    transition: transform 0.2s;
+const styles ={
+  container:{
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    alignContent: 'center',
+    margin: '10px',
+    position: 'static'
+  },
+  prod:{
+    display: 'flex',
+    color: 'white',
+    fontSize: '15px',
+    border: 'none',
+    textDecoration: 'none',
+    backgroundColor: 'red',
+    borderRadius: '25px',
+    width: '20px',
+    height: '20px',
+    position: 'relative',
+    top: '15px',
+    margin: '0 auto'
   }
-`;
+}
 
-const CartProducts = styled.div`
-  display:flex;
-  justify-content:center;
-  color: white;
-  font-size: 10px:
-  border: none;
-  background-color: red;
-  border-radius:5px;
-  width:20px;
-  position:relative;
-  top: 10px;
-`;

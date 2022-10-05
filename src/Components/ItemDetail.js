@@ -4,7 +4,7 @@ import { useState } from "react";
 import  ItemCount  from "../Components/ItemCount/ItemCount";
 import  { Link } from 'react-router-dom';
 import { useCartContext } from '../Context/CartContext';
-import Toastify from "toastify-js";
+// import Toastify from "toastify-js";
 import "toastify-js/src/toastify.css";
 
 
@@ -17,10 +17,10 @@ export const ItemDetail = ({producto})=>{
     const onAdd = (cantidad) => {
         setIrAlCarrito(true);
         addItem(producto, cantidad);
-        Toastify({
-          text: `Usted a agregado ${cantidad} unidades de ${producto.name}.`,
-          duration: 3500,
-        }).showToast();
+        // Toastify({
+        //   text: `Usted a agregado ${cantidad} unidades de ${producto.name}.`,
+        //   duration: 3500,
+        // }).showToast();
       };
     
     return(
@@ -35,7 +35,7 @@ export const ItemDetail = ({producto})=>{
             <h3 style={styles.cardPrice}>Precio: $ {producto.price}</h3>
             {
             irAlCarrito
-            ? <Link style={styles.link} to='/cart'><Button variant="contained">Finalizar Compra</Button></Link>
+            ? <Link style={styles.link} to='/cart'><Button variant="contained" color="success">Finalizar Compra</Button></Link>
             :<ItemCount inicio={1} stock={producto.stock} onAdd={onAdd} />
  
             }
@@ -65,8 +65,6 @@ const styles ={
     },
     card:{
         display: 'flex',
-        // alignItems:'center',
-        // justifyContent: 'center',
         margin: '0 auto',
         width: '800px',
         border: '2px solid #dbfbde',
@@ -76,8 +74,6 @@ const styles ={
     
     img:{
         display: 'block',
-        // alignItems:'center',
-        // justifyContent: 'center',
         marginLeft: 'auto',
         marginRight: 'auto',
         alignItems:'center',

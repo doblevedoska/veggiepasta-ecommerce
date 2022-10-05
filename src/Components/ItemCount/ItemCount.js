@@ -20,6 +20,7 @@ const [contador,setContador]=useState(1);
     }
     const agregar =() => {
         onAdd(contador);
+        Swal.fire(`Se agregaron ${contador} productos al carrito`);
     }
 
     return (
@@ -27,12 +28,12 @@ const [contador,setContador]=useState(1);
         <div style={styles.card}> 
         <h3 style={styles.cardText}>ItemCount</h3>
         <div style={styles.itemCard}>
-            <Button style={styles.itemSymbol} variant="contained" size="large" onClick={restar}>-</Button>
+            <Button style={styles.itemSymbol} variant="contained" color="success" size="small" onClick={restar}>-</Button>
             <h2 style={styles.itemSymbol}> {contador}</h2>
-            <Button style={styles.itemSymbol} variant="contained" size="large" onClick={sumar}>+</Button>
+            <Button style={styles.itemSymbol} variant="contained" color="success" size="medium" onClick={sumar}>+</Button>
         </div>
         <div style={styles.itemCard}>
-            <Button variant="contained" onClick={agregar}>Agregar al Carrito</Button>
+            <Button variant="contained" color="success" onClick={agregar}>Agregar al Carrito</Button>
             
         </div>
         <p style={styles.cardText}>(Stock: {stock})</p>
@@ -65,6 +66,7 @@ const [contador,setContador]=useState(1);
         },
         itemSymbol: {
             padding: '4%',
+            fontSize: '120%'
         },
     }
 

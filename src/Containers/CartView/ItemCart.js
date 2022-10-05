@@ -1,46 +1,61 @@
 import React from "react";
 import { useCartContext } from "../../Context/CartContext";
-import styled from "styled-components";
+import Button from '@mui/material/Button';
 
 export const ItemCart = ({ product }) => {
   const { removeItem } = useCartContext();
 
   return (
     <>
-      <ItemClass>
-        <div>
+      <div style={styles.container}>
+        <div style={styles.imgCard} >
+          <img style={styles.img} src={product.img} alt="" /> 
+        </div>
+        <div style={styles.text}>
           <p>Producto: {product.name}</p>
           <p>Cantidad: {product.cantidad}</p>
           <p>Precio unitario: $ {product.price}</p>
           <p>Subtotal: ${product.cantidad * product.price}</p>
-          <button onClick={() => removeItem(product.id)}>
-            Eliminar Producto
-          </button>
         </div>
-      </ItemClass>
+        <div style={styles.boton}>
+          <Button variant="outlined" color="success"onClick={() => removeItem(product.id)}>
+            Eliminar Producto
+          </Button>
+        </div>
+      </div>
     </>
   );
 };
 
-const ItemClass = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  align-items: center;
-  div {
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(220, 220, 220);
-    justify-content: center;
-    padding: 20px;
-    border-radius: 20px;
+const styles ={
+  container:{
+      display: 'flex',
+      margin: '0 auto',
+      width: '400px',
+
+      border: '2px solid #dbfbde',
+      borderRadius:10,
+      marginBottom: 25
+  },
+  imgCard:{
+    display: 'inline-block',
+    paddingLeft: '20px'
+  },
+  img:{
+    display: 'block',
+    height: '70px'
+  },
+  text:{
+    display: 'inline-block',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingLeft: '20px'
+  },
+  boton:{
+    display: 'block',
+    margin: '0 auto',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
-  button {
-    font-size: 15px;
-    height: 25px;
-    font-weight: bold;
-  }
-  p {
-    margin: 8px;
-  }
-`;
+
+}
