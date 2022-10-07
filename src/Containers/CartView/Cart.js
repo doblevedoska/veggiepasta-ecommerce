@@ -34,6 +34,7 @@ export const Cart = () => {
   );
 };
 
+//Estilos Cart
 
 const styles ={
   link:{
