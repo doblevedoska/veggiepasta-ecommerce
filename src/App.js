@@ -15,11 +15,6 @@ const App = () => {
   const mensaje = "Hola, bienvenidos! 😊";
   const detalle = "Detalle del Producto";
 
-  // const onAdd = (contador)=>{
-  //   //console.log(`Se agregaron ${contador} ítems al carrito`);
-  //   Swal.fire(`Se agregaron ${contador} ítems al carrito`);
-  // }
-
 
 
   return (
