@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { products } from "../Components/Products";
+//import { products } from "../Components/Products";
 import { ItemList } from "../Components/ItemList";
 import LinearProgress from '@mui/material/LinearProgress';
 import { useParams } from "react-router-dom";
-//import { responsiveFontSizes } from "@material-ui/core";
+import { db } from "../firebase/firebase";
+import { getDocs, collection, query, where } from "firebase/firestore";
+//import { LegendToggleRounded } from "@mui/icons-material";
 
 
 export const customFetch =(products)=>{
@@ -21,22 +23,40 @@ const ItemListContainer = ({greeting}) =>{
     let {IdCat} = useParams();
     const [listProducts, setListproducts] = useState([])
     const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(false);
+    
 
     useEffect(()=>{
-    customFetch(products)
-        .then(res=> 
-        {
-            if(IdCat){
-                setLoading (false)
-                setListproducts(res.filter(productos => productos.categoria === IdCat))
+        
+        //Firebase
 
-            }
-            else{
-                setLoading (false)
-                setListproducts(res)
-            }
+        let productosCollection = collection(db, 'productos');
 
+        if(IdCat){
+            productosCollection = query(productosCollection, where('categoria', '==', IdCat))
+        }
+
+
+        getDocs(productosCollection)
+        .then((data)=>{
+            const listaProductos = data.docs.map((producto)=>{
+                return {
+                    ...producto.data(),
+                    id: producto.id
+                }
+            })
+            setListproducts(listaProductos)
         })
+        .catch(()=>{
+            setError(true);
+        })
+        .finally(()=>{
+            setLoading(false);
+        }
+            
+        )
+        
+
 },[IdCat])
 
 return(
@@ -44,6 +64,8 @@ return(
     <h2 style={styles.greetingText}>{greeting}</h2>
     {loading ?
     <LinearProgress color="inherit"/>
+    : error ?
+    <h2>Ocurrio un error!</h2>
     :
     <ItemList listProducts={listProducts}/>
     }
