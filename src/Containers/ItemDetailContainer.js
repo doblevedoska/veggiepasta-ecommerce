@@ -43,13 +43,6 @@ const ItemDetailContainer = ({greeting}) =>{
             setLoading(false);
         })
 
-        // customFetch(products, parseInt(IdProd))
-        //     .then(resolve=> 
-        //     {
-        //         setLoading (false)
-        //         setProducto(resolve);
-        //         // console.log(resolve);
-        //     })
     },[IdProd]);
 
 

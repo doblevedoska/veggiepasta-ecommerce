@@ -21,7 +21,7 @@ export const ItemDetail = ({producto})=>{
         //   text: `Usted a agregado ${cantidad} unidades de ${producto.name}.`,
         //   duration: 3500,
         // }).showToast();
-      };
+    };
     
     return(
         <>
@@ -35,11 +35,17 @@ export const ItemDetail = ({producto})=>{
             <h3 style={styles.cardPrice}>Precio: $ {producto.price}</h3>
             {
             irAlCarrito
-            ? <Link style={styles.link} to='/cart'><Button variant="contained" color="success">Finalizar Compra</Button></Link>
+            ? <>
+                <Link style={styles.link} to='/cart'><Button variant="contained" color="success">Ver Carrito</Button></Link>
+                <Link style={styles.link} to="/">
+                    <Button variant="contained" color="success">Agregar mas productos</Button>
+                </Link>
+            </>  
             :<ItemCount inicio={1} stock={producto.stock} onAdd={onAdd} />
- 
+
             }
-           
+            
+
         </div>
 
         </div>
@@ -94,6 +100,7 @@ const styles ={
         fontFamily: 'Ubuntu-Regular'
     },
     link:{
+        padding: "10px",
         textDecoration: 'none'
     },
     cardRight:{

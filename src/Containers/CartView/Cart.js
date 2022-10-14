@@ -4,9 +4,39 @@ import { useCartContext } from "../../Context/CartContext";
 import { ItemCart } from "./ItemCart";
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
+// import TextField from '@mui/material/TextField';
+import { db } from "../../firebase/firebase";
+import { collection, addDoc, serverTimestamp, doc, updateDoc } from "firebase/firestore"
 
 export const Cart = () => {
-  const { cart, PrecioTotal } = useCartContext();
+  const { cart, PrecioTotal, clear } = useCartContext();
+
+  const comprador = {
+    nombre: "Juan",
+    apellido: "Perez",
+    email: "juanperez@mail.com"
+
+  };
+
+  const finalizarCompra = ()=>{
+    const ventasCollection = collection(db, "ventas");
+    addDoc(ventasCollection, {
+      comprador,
+      items: cart,
+      date: serverTimestamp(),
+      total: PrecioTotal()
+    })
+    .then(result =>{
+      clear();
+    })
+  }
+
+  //Firebase Actualizar stock, a completar
+
+  // const actualizarStock = ()=>{
+  //   const updateStock = doc(db, "productos", "idproducto");
+  //   updateDoc(updateStock, {stock: 50});
+  // }
 
   if (cart.length === 0) {
     return (
@@ -30,6 +60,9 @@ export const Cart = () => {
         <ItemCart key={product.id} product={product} />
       ))}
       <h2 style={styles.total}>Total a abonar: ${PrecioTotal()}</h2>
+      <Link style={styles.link} to="/">
+        <Button onClick={finalizarCompra} variant="contained" color="success">Finalizar Compra</Button>
+      </Link>
     </>
   );
 };
