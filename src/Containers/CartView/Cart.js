@@ -4,45 +4,19 @@ import { useCartContext } from "../../Context/CartContext";
 import { ItemCart } from "./ItemCart";
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
-// import TextField from '@mui/material/TextField';
-import { db } from "../../firebase/firebase";
-import { collection, addDoc, serverTimestamp, doc, updateDoc } from "firebase/firestore"
+// import { db } from "../../firebase/firebase";
+// import { collection, addDoc, serverTimestamp, doc, updateDoc } from "firebase/firestore"
 
 export const Cart = () => {
   const { cart, PrecioTotal, clear } = useCartContext();
 
-  const comprador = {
-    nombre: "Juan",
-    apellido: "Perez",
-    email: "juanperez@mail.com"
 
-  };
-
-  const finalizarCompra = ()=>{
-    const ventasCollection = collection(db, "ventas");
-    addDoc(ventasCollection, {
-      comprador,
-      items: cart,
-      date: serverTimestamp(),
-      total: PrecioTotal()
-    })
-    .then(result =>{
-      clear();
-    })
-  }
-
-  //Firebase Actualizar stock, a completar
-
-  // const actualizarStock = ()=>{
-  //   const updateStock = doc(db, "productos", "idproducto");
-  //   updateDoc(updateStock, {stock: 50});
-  // }
 
   if (cart.length === 0) {
     return (
       <>
         <div style={styles.empty}>
-          <img width="250" src={emptyCart} alt="logo" />
+          <img width="250" src={emptyCart} alt="emptyCart" />
           <p>No existen aun productos en el carrito!</p>
           <Link style={styles.link} to="/">
             <Button variant="contained" color="success">Volver</Button>
@@ -53,15 +27,18 @@ export const Cart = () => {
   }
   return (
     <>
-      <Link style={styles.link} to="/">
-        <Button variant="contained" color="success">Agregar mas productos</Button>
-      </Link>
       {cart.map((product) => (
         <ItemCart key={product.id} product={product} />
       ))}
       <h2 style={styles.total}>Total a abonar: ${PrecioTotal()}</h2>
       <Link style={styles.link} to="/">
-        <Button onClick={finalizarCompra} variant="contained" color="success">Finalizar Compra</Button>
+        <Button variant="contained" color="success">Agregar mas productos</Button>
+      </Link>
+      <Link style={styles.link} to="/">
+        <Button onClick={clear} variant="contained" color="success">Vaciar Carrito</Button>
+      </Link>
+      <Link style={styles.link} to="/form">
+        <Button variant="contained" color="success">Finalizar Compra</Button>
       </Link>
     </>
   );

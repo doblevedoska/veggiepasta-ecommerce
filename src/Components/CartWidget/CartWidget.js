@@ -25,18 +25,28 @@ const styles ={
     position: 'static'
   },
   prod:{
+    // display: 'flex',
+    // color: 'white',
+    // fontSize: '15px',
+    // border: 'none',
+    // textDecoration: 'none',
+    // backgroundColor: 'red',
+    // borderRadius: '25px',
+    // width: '20px',
+    // height: '20px',
+    // position: 'relative',
+    // top: '15px',
+    // margin: '0 auto'
     display: 'flex',
+    justifyContent: 'center',
     color: 'white',
     fontSize: '15px',
     border: 'none',
-    textDecoration: 'none',
     backgroundColor: 'red',
     borderRadius: '25px',
     width: '20px',
-    height: '20px',
     position: 'relative',
-    top: '15px',
-    margin: '0 auto'
+    top: '10px'
   }
 }
 
